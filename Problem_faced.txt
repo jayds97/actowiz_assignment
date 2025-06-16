@@ -1,0 +1,17 @@
+Dynamic Content Handling
+Google Maps loads business listings and other elements dynamically using JavaScript, so elements weren’t immediately available in the DOM. This required using appropriate wait conditions and scroll automation to ensure content was fully loaded before interaction.
+
+Scrolling Through Listings Panel
+Automating scroll on the left-hand listings panel (where hotels or businesses are shown) was tricky. I used keyboard events (ARROW_DOWN) and verified the appearance of the last element to detect the end of the list.
+
+Unstable & Deep XPaths
+Many elements had deeply nested or dynamic XPaths that often changed. I resolved this by switching to more reliable CSS selectors and adding proper waits using Selenium.
+
+Complex Class-Based Element Selection
+Some clickable elements had multiple classes. Instead of using find_element_by_class_name, I used By.CSS_SELECTOR with combined class selectors to accurately target them.
+
+File Saving Issues
+While saving HTML pages locally, I faced OSError and FileNotFoundError due to invalid or overly long filenames generated from raw URLs. I fixed this by sanitizing the URLs using re.sub() and shortening the filename safely.
+
+Distance Data Cleanup & Conversion
+Distance data was extracted in mixed formats, sometimes with extra decimal points and in miles instead of kilometers. I cleaned the text, converted miles to kilometers where needed, and rounded off to a manageable float precision.
